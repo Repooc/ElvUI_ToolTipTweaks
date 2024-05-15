@@ -1,0 +1,17 @@
+## Interface: 100207
+## Interface-Cata: 40400
+## Interface-Classic: 11502
+## Title: |cff1784d1ElvUI|r |cff00FF98ToolTip Tweaks|r
+## Author: Repooc
+## Version: 1.01
+## Notes: Tweak ElvUI Tooltips
+## RequiredDeps: ElvUI
+## X-Curse-Project-ID: 1019254
+## X-Wago-ID: x61z4pK1
+## IconTexture: Interface\AddOns\ElvUI\Core\Media\Textures\LogoAddon
+
+Profile.lua
+Libs\Load_Libs.xml
+Init.lua
+Core.lua
+Options.lua
