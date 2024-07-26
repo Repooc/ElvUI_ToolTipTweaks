@@ -1,3 +1,3 @@
-v1.01 5/15/2024
+v1.02 7/25/2024
 
-• release to the public with options
+• bump toc

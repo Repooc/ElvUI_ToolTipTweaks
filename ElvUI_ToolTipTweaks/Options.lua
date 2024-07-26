@@ -1,7 +1,7 @@
 local E, L, _, P = unpack(ElvUI)
 local AddOnName = ...
 local TTT = E:GetModule(AddOnName)
-local RRP = LibStub('RepoocReforged-1.0'):LoadMainCategory()
+LibStub('RepoocReforged-1.0'):LoadMainCategory()
 local TT = E.Tooltip
 local ACH = E.Libs.ACH
 
