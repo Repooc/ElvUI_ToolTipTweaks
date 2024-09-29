@@ -1,9 +1,7 @@
-## Interface: 110002
-## Interface-Cata: 40400
-## Interface-Classic: 11503
+## Interface: 110002, 40400, 11504
 ## Title: |cff1784d1ElvUI|r |cff00FF98ToolTip Tweaks|r
 ## Author: Repooc
-## Version: 1.03
+## Version: 1.04
 ## Notes: Tweak ElvUI Tooltips
 ## RequiredDeps: ElvUI
 ## X-Curse-Project-ID: 1019254
