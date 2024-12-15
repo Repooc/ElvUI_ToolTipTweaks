@@ -20,7 +20,6 @@ local function optionsTable()
 	local General = ACH:Group(L["General"], nil, 1, nil, function(info) return E.db.tooltiptweaks[info[#info]] end, function(info, value) E.db.tooltiptweaks[info[#info]] = value end, function() return not TT.Initialized end)
 	ToolTipTweaks.args.general = General
 	General.args.enable = ACH:Toggle(L["Enable"], nil, 1)
-	-- ACH:Toggle(name, desc, order, tristate, confirm, width, get, set, disabled, hidden)
 
 	--* Padding Section
 	local Padding = ACH:Group(L["Padding"], nil, 1, nil, function(info) return E.db.tooltiptweaks.padding[info[#info]] end, function(info, value) E.db.tooltiptweaks.padding[info[#info]] = value end, function() return not E.db.tooltiptweaks.enable end)

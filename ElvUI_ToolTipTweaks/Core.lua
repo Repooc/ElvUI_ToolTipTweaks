@@ -8,12 +8,11 @@ local TT = E.Tooltip
 local InCombatLockdown = InCombatLockdown
 
 TTT.firstRunHealth = true
-function TTT:GameTooltip_SetDefaultAnchor(tt, parent, a)
 	if not E.db.tooltiptweaks.enable then return end
+function TTT:GameTooltip_SetDefaultAnchor(tt, parent)
 	if not E.private.tooltip.enable or not TT.db.visibility or tt:IsForbidden() or tt:GetAnchorType() ~= 'ANCHOR_NONE' then
 		return
 	elseif (InCombatLockdown() and not TT:IsModKeyDown(TT.db.visibility.combatOverride)) or (not AB.KeyBinder.active and not TT:IsModKeyDown(TT.db.visibility.actionbars) and AB.handledbuttons[tt:GetOwner()]) then
-		-- tt:Hide()
 		return
 	end
 	local db = E.db.tooltiptweaks
@@ -58,10 +57,8 @@ function TTT:GameTooltip_SetDefaultAnchor(tt, parent, a)
 
 		if not E:HasMoverBeenMoved('TooltipMover') then
 			if not db.padding.ignoreBagFrame and B.BagFrame and B.BagFrame:IsShown() then
-				-- tt:Point('BOTTOMRIGHT', B.BagFrame, 'TOPRIGHT', 0, 18 + db.xOffset)
 				tt:Point('BOTTOMRIGHT', B.BagFrame, 'TOPRIGHT', 0, 18)
 			elseif RightChatPanel:GetAlpha() == 1 and RightChatPanel:IsShown() then
-				-- tt:Point('BOTTOMRIGHT', RightChatPanel, 'TOPRIGHT', 0, 18 + db.xOffset)
 				tt:Point('BOTTOMRIGHT', RightChatPanel, 'TOPRIGHT', 0, 18)
 			else
 				tt:Point('BOTTOMRIGHT', RightChatPanel, 'BOTTOMRIGHT', db.padding.xOffset, db.padding.useDefaultPadding and 18 + db.padding.yOffset or db.padding.yOffset)
