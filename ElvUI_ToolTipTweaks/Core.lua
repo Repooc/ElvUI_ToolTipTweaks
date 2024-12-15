@@ -7,6 +7,7 @@ local TT = E.Tooltip
 
 local InCombatLockdown = InCombatLockdown
 
+TTT.firstRunHealth = true
 function TTT:GameTooltip_SetDefaultAnchor(tt, parent, a)
 	if not E.db.tooltiptweaks.enable then return end
 	if not E.private.tooltip.enable or not TT.db.visibility or tt:IsForbidden() or tt:GetAnchorType() ~= 'ANCHOR_NONE' then
@@ -14,6 +15,34 @@ function TTT:GameTooltip_SetDefaultAnchor(tt, parent, a)
 	elseif (InCombatLockdown() and not TT:IsModKeyDown(TT.db.visibility.combatOverride)) or (not AB.KeyBinder.active and not TT:IsModKeyDown(TT.db.visibility.actionbars) and AB.handledbuttons[tt:GetOwner()]) then
 		-- tt:Hide()
 		return
+	end
+	local db = E.db.tooltiptweaks
+
+	local statusBar = tt.StatusBar
+	local position = TT.db.healthBar.statusPosition
+	if statusBar and db.healthBar.enable then
+		local spacing = (E.Spacing * 3) + (db.healthBar.spacing or 0)
+
+
+		if position == 'BOTTOM' and (TTT.firstRunHealth or statusBar.TTT_anchoredToTop) then
+			statusBar:ClearAllPoints()
+			statusBar:Point('TOPLEFT', tt, 'BOTTOMLEFT', E.Border, -spacing)
+			statusBar:Point('TOPRIGHT', tt, 'BOTTOMRIGHT', -E.Border, -spacing)
+			statusBar.TTT_anchoredToTop = nil
+		elseif position == 'TOP' and (TTT.firstRunHealth or not statusBar.TTT_anchoredToTop) then
+			statusBar:ClearAllPoints()
+			statusBar:Point('BOTTOMLEFT', tt, 'TOPLEFT', E.Border, spacing)
+			statusBar:Point('BOTTOMRIGHT', tt, 'TOPRIGHT', -E.Border, spacing)
+			statusBar.TTT_anchoredToTop = true
+		end
+
+		TTT.firstRunHealth = false
+	elseif statusBar and TTT.firstRunHealth and not db.healthBar.enable then
+		if position == 'BOTTOM' then
+			statusBar.anchoredToTop = true
+		elseif position == 'TOP' then
+			statusBar.anchoredToTop = nil
+		end
 	end
 
 	if parent and TT.db.cursorAnchor then
@@ -27,7 +56,6 @@ function TTT:GameTooltip_SetDefaultAnchor(tt, parent, a)
 	if anchor == nil or anchor == B.BagFrame or anchor == RightChatPanel or anchor == TooltipMover or anchor == _G.GameTooltipDefaultContainer or anchor == _G.UIParent or anchor == E.UIParent then
 		tt:ClearAllPoints()
 
-		local db = E.db.tooltiptweaks
 		if not E:HasMoverBeenMoved('TooltipMover') then
 			if not db.padding.ignoreBagFrame and B.BagFrame and B.BagFrame:IsShown() then
 				-- tt:Point('BOTTOMRIGHT', B.BagFrame, 'TOPRIGHT', 0, 18 + db.xOffset)

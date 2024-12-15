@@ -31,6 +31,14 @@ local function optionsTable()
 	Padding.args.xOffset = ACH:Range(L["X Offset"], nil, 2, { min = -250, max = 250, step = 1 })
 	Padding.args.yOffset = ACH:Range(L["Y Offset"], nil, 3, { min = -250, max = 250, step = 1 })
 
+	--* Health Section
+	local Health = ACH:Group(L["Health"], nil, 2, nil, function(info) return E.db.tooltiptweaks[info[#info-1]][info[#info]] end, function(info, value) E.db.tooltiptweaks[info[#info-1]][info[#info]] = value TTT.firstRunHealth = true end)
+	General.args.healthBar = Health
+	Health.inline = true
+	Health.args.enable = ACH:Toggle(L["Enable"], nil, 1)
+	Health.args.spacer = ACH:Spacer(2, 'full')
+	Health.args.spacing = ACH:Range(L["Spacing"], nil, 5, { min = 0, max = 20, step = 1 })
+
 	-- ACH:Range(name, desc, order, values, width, get, set, disabled, hidden)
 	--* Help Tab
 	local Help = ACH:Group(L["Help"], nil, 99, nil, nil, nil, false)
