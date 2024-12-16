@@ -57,7 +57,7 @@ local function optionsTable()
 	ToolTipTweaks.args.healthBar = Health
 	Health.args.enable = ACH:Toggle(L["Enable"], nil, 1)
 	Health.args.spacer = ACH:Spacer(2, 'full')
-	Health.args.spacing = ACH:Range(L["Spacing"], nil, 5, { min = 0, max = 20, step = 1 })
+	Health.args.spacing = ACH:Range(L["Spacing"], nil, 5, { min = 0, max = 10, step = 1 })
 
 	--* Help Tab
 	local Help = ACH:Group(L["Help"], nil, 99, nil, nil, nil, false)
