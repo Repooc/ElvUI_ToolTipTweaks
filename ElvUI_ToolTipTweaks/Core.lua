@@ -16,6 +16,8 @@ function TTT:GameTooltip_SetDefaultAnchor(tt, parent)
 	end
 
 	local db = E.db.tooltiptweaks
+	if not db then return end
+
 	local statusBar = tt.StatusBar
 	local position = TT.db.healthBar.statusPosition
 	if statusBar and db.healthBar.enable then
