@@ -68,13 +68,13 @@ function TTT:GameTooltip_SetDefaultAnchor(tt, parent)
 		else
 			local point = E:GetScreenQuadrant(TooltipMover)
 			if point == 'TOPLEFT' then
-				tt:Point('TOPLEFT', TooltipMover, 'BOTTOMLEFT', db.ttPlacement.general.useDefault and 1 or db.ttPlacement.xOffset, db.ttPlacement.general.useDefault and -4 or db.ttPlacement.yOffset)
+				tt:Point('TOPLEFT', TooltipMover, 'BOTTOMLEFT', db.ttPlacement.general.useDefault and 1 or db.ttPlacement.general.xOffset, db.ttPlacement.general.useDefault and -4 or db.ttPlacement.general.yOffset)
 			elseif point == 'TOPRIGHT' then
-				tt:Point('TOPRIGHT', TooltipMover, 'BOTTOMRIGHT', db.ttPlacement.general.useDefault and -1 or db.ttPlacement.xOffset, db.ttPlacement.general.useDefault and -4 or db.ttPlacement.yOffset)
+				tt:Point('TOPRIGHT', TooltipMover, 'BOTTOMRIGHT', db.ttPlacement.general.useDefault and -1 or db.ttPlacement.general.xOffset, db.ttPlacement.general.useDefault and -4 or db.ttPlacement.general.yOffset)
 			elseif point == 'BOTTOMLEFT' or point == 'LEFT' then
-				tt:Point('BOTTOMLEFT', TooltipMover, 'TOPLEFT', db.ttPlacement.general.useDefault and 1 or db.ttPlacement.xOffset, db.ttPlacement.general.useDefault and 18 or db.ttPlacement.yOffset)
+				tt:Point('BOTTOMLEFT', TooltipMover, 'TOPLEFT', db.ttPlacement.general.useDefault and 1 or db.ttPlacement.general.xOffset, db.ttPlacement.general.useDefault and 18 or db.ttPlacement.general.yOffset)
 			else
-				tt:Point('BOTTOMRIGHT', TooltipMover, 'TOPRIGHT', db.ttPlacement.general.useDefault and -1 or db.ttPlacement.xOffset, db.ttPlacement.general.useDefault and 18 or db.ttPlacement.yOffset)
+				tt:Point('BOTTOMRIGHT', TooltipMover, 'TOPRIGHT', db.ttPlacement.general.useDefault and -1 or db.ttPlacement.general.xOffset, db.ttPlacement.general.useDefault and 18 or db.ttPlacement.general.yOffset)
 			end
 		end
 	end
