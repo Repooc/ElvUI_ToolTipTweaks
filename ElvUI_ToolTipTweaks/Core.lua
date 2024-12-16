@@ -8,20 +8,18 @@ local TT = E.Tooltip
 local InCombatLockdown = InCombatLockdown
 
 TTT.firstRunHealth = true
-	if not E.db.tooltiptweaks.enable then return end
 function TTT:GameTooltip_SetDefaultAnchor(tt, parent)
 	if not E.private.tooltip.enable or not TT.db.visibility or tt:IsForbidden() or tt:GetAnchorType() ~= 'ANCHOR_NONE' then
 		return
 	elseif (InCombatLockdown() and not TT:IsModKeyDown(TT.db.visibility.combatOverride)) or (not AB.KeyBinder.active and not TT:IsModKeyDown(TT.db.visibility.actionbars) and AB.handledbuttons[tt:GetOwner()]) then
 		return
 	end
-	local db = E.db.tooltiptweaks
 
+	local db = E.db.tooltiptweaks
 	local statusBar = tt.StatusBar
 	local position = TT.db.healthBar.statusPosition
 	if statusBar and db.healthBar.enable then
 		local spacing = (E.Spacing * 3) + (db.healthBar.spacing or 0)
-
 
 		if position == 'BOTTOM' and (TTT.firstRunHealth or statusBar.TTT_anchoredToTop) then
 			statusBar:ClearAllPoints()
@@ -42,13 +40,17 @@ function TTT:GameTooltip_SetDefaultAnchor(tt, parent)
 		elseif position == 'TOP' then
 			statusBar.anchoredToTop = nil
 		end
+
+		TTT.firstRunHealth = false
 	end
+
+	if not db.ttPlacement.enable then return end
 
 	if parent and TT.db.cursorAnchor then
         return
 	end
 
-    local RightChatPanel = _G.RightChatPanel
+	local RightChatPanel = _G.RightChatPanel
 	local TooltipMover = _G.TooltipMover
 	local _, anchor = tt:GetPoint()
 
@@ -56,23 +58,23 @@ function TTT:GameTooltip_SetDefaultAnchor(tt, parent)
 		tt:ClearAllPoints()
 
 		if not E:HasMoverBeenMoved('TooltipMover') then
-			if not db.padding.ignoreBagFrame and B.BagFrame and B.BagFrame:IsShown() then
-				tt:Point('BOTTOMRIGHT', B.BagFrame, 'TOPRIGHT', 0, 18)
-			elseif RightChatPanel:GetAlpha() == 1 and RightChatPanel:IsShown() then
-				tt:Point('BOTTOMRIGHT', RightChatPanel, 'TOPRIGHT', 0, 18)
+			if not db.ttPlacement.ignoreBagFrame and B.BagFrame and B.BagFrame:IsShown() then
+				tt:Point('BOTTOMRIGHT', B.BagFrame, 'TOPRIGHT', db.ttPlacement.bags.useDefault and 0 or db.ttPlacement.bags.xOffset, db.ttPlacement.bags.useDefault and 18 or db.ttPlacement.bags.yOffset)
+			elseif not db.ttPlacement.ignoreRightChatPanel and RightChatPanel:GetAlpha() == 1 and RightChatPanel:IsShown() then
+				tt:Point('BOTTOMRIGHT', RightChatPanel, 'TOPRIGHT', db.ttPlacement.rightchatpanel.useDefault and 0 or db.ttPlacement.rightchatpanel.xOffset, db.ttPlacement.rightchatpanel.useDefault and 18 or db.ttPlacement.rightchatpanel.yOffset)
 			else
-				tt:Point('BOTTOMRIGHT', RightChatPanel, 'BOTTOMRIGHT', db.padding.xOffset, db.padding.useDefaultPadding and 18 + db.padding.yOffset or db.padding.yOffset)
+				tt:Point('BOTTOMRIGHT', RightChatPanel, 'BOTTOMRIGHT', db.ttPlacement.general.useDefault and 0 or db.ttPlacement.general.xOffset, db.ttPlacement.general.useDefault and 18 or db.ttPlacement.general.yOffset)
 			end
 		else
 			local point = E:GetScreenQuadrant(TooltipMover)
 			if point == 'TOPLEFT' then
-				tt:Point('TOPLEFT', TooltipMover, 'BOTTOMLEFT', db.padding.useDefaultPadding and 1 + db.padding.xOffset or db.padding.xOffset, db.padding.useDefaultPadding and -4 + db.padding.yOffset or db.padding.yOffset)
+				tt:Point('TOPLEFT', TooltipMover, 'BOTTOMLEFT', db.ttPlacement.general.useDefault and 1 or db.ttPlacement.xOffset, db.ttPlacement.general.useDefault and -4 or db.ttPlacement.yOffset)
 			elseif point == 'TOPRIGHT' then
-				tt:Point('TOPRIGHT', TooltipMover, 'BOTTOMRIGHT', db.padding.useDefaultPadding and -1 + db.padding.xOffset or db.padding.xOffset, db.padding.useDefaultPadding and -4 + db.padding.yOffset or db.padding.yOffset)
+				tt:Point('TOPRIGHT', TooltipMover, 'BOTTOMRIGHT', db.ttPlacement.general.useDefault and -1 or db.ttPlacement.xOffset, db.ttPlacement.general.useDefault and -4 or db.ttPlacement.yOffset)
 			elseif point == 'BOTTOMLEFT' or point == 'LEFT' then
-				tt:Point('BOTTOMLEFT', TooltipMover, 'TOPLEFT', db.padding.useDefaultPadding and 1 + db.padding.xOffset or db.padding.xOffset, db.padding.useDefaultPadding and 18 + db.padding.yOffset or db.padding.yOffset)
+				tt:Point('BOTTOMLEFT', TooltipMover, 'TOPLEFT', db.ttPlacement.general.useDefault and 1 or db.ttPlacement.xOffset, db.ttPlacement.general.useDefault and 18 or db.ttPlacement.yOffset)
 			else
-				tt:Point('BOTTOMRIGHT', TooltipMover, 'TOPRIGHT', db.padding.useDefaultPadding and -1 + db.padding.xOffset or db.padding.xOffset, db.padding.useDefaultPadding and 18 + db.padding.yOffset or db.padding.yOffset)
+				tt:Point('BOTTOMRIGHT', TooltipMover, 'TOPRIGHT', db.ttPlacement.general.useDefault and -1 or db.ttPlacement.xOffset, db.ttPlacement.general.useDefault and 18 or db.ttPlacement.yOffset)
 			end
 		end
 	end

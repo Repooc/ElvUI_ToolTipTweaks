@@ -15,9 +15,18 @@ local function GetOptions()
 		func()
 	end
 end
+local function ResetMovers(_, arg)
+	local all = not arg or arg == ''
+
+	if arg == 'Tooltip' or all then
+		E.Libs.AceConfigRegistry:NotifyChange('ElvUI')
+	end
+end
 
 local function Initialize()
-    EP:RegisterPlugin(AddOnName, GetOptions)
-    TTT:SecureHook(TT, 'GameTooltip_SetDefaultAnchor', TTT.GameTooltip_SetDefaultAnchor)
+	EP:RegisterPlugin(AddOnName, GetOptions)
+	TTT:SecureHook(TT, 'GameTooltip_SetDefaultAnchor', TTT.GameTooltip_SetDefaultAnchor)
+	TTT:SecureHook(E, 'ResetMovers', ResetMovers)
+	TooltipMover:HookScript('OnDragStop', function() ResetMovers(nil, 'Tooltip') end)
 end
 EP:HookInitialize(TTT, Initialize)
