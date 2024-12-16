@@ -25,6 +25,8 @@ end
 
 local function Initialize()
 	EP:RegisterPlugin(AddOnName, GetOptions)
+	if not TT.Initialized then return end
+
 	TTT:SecureHook(TT, 'GameTooltip_SetDefaultAnchor', TTT.GameTooltip_SetDefaultAnchor)
 	TTT:SecureHook(E, 'ResetMovers', ResetMovers)
 	TooltipMover:HookScript('OnDragStop', function() ResetMovers(nil, 'Tooltip') end)
