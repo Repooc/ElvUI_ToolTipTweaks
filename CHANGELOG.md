@@ -1,4 +1,4 @@
-v1.05 10/23/2024
+v1.06 12/15/2024
 
 • bump toc
 • NEW: Add ability to offset the health bar of units to provide some space between it and the rest of the tooltip frame, useful for addons that alter the border and that border is a bit bigger
