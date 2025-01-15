@@ -1,3 +1,3 @@
-v1.07 12/16/2024
+v1.08 1/15/2025
 
-• fixed a typo for new db structure
+• bump toc

@@ -1,7 +1,7 @@
-## Interface: 110005, 40401, 11505
+## Interface: 110007, 40401, 11505
 ## Title: |cff1784d1ElvUI|r |cff00FF98ToolTip Tweaks|r
 ## Author: Repooc
-## Version: 1.07
+## Version: 1.08
 ## Notes: Tweak ElvUI Tooltips
 ## RequiredDeps: ElvUI
 ## X-Curse-Project-ID: 1019254
