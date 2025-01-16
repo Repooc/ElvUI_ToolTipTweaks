@@ -1,5 +1,5 @@
 ## Interface: 110007, 40401, 11505
-## Title: |cff1784d1ElvUI|r |cff00FF98ToolTip Tweaks|r
+## Title: |cff1784d1ElvUI|r |cff00FF98ToolTip|r |cffA330C9Tweaks|r
 ## Author: Repooc
 ## Version: 1.08
 ## Notes: Tweak ElvUI Tooltips
