@@ -11,7 +11,7 @@ local function optionsTable()
 	if not rrp then print("Error Loading Repooc Reforged Plugin Library") return end
 
 	--* Plugin Section
-	local ToolTipTweaks = ACH:Group('|cff00FF98ToolTip|r |cffA330C9Tweaks|r', nil, 6, 'tab', nil, nil, function() return not TT.Initialized end)
+	local ToolTipTweaks = ACH:Group(gsub(TTT.Title, "^.-|r%s", ""), nil, 6, 'tab', nil, nil, function() return not TT.Initialized end)
 	rrp.args.ttt = ToolTipTweaks
 
 	ToolTipTweaks.args.version = ACH:Header(format('|cff99ff33%s|r', TTT.Version), 1)
