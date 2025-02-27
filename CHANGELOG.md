@@ -1,3 +1,3 @@
-v1.09 1/16/2025
+v1.1.0 2/27/2025
 
-• update title colors
+• bump toc
