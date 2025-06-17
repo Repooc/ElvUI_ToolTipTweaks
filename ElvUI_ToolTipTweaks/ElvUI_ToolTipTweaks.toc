@@ -1,12 +1,12 @@
-## Interface: 110100, 40402, 11506
+## Interface: 110107, 40402, 11507
 ## Title: |cff1784d1ElvUI|r |cff00FF98ToolTip|r |cffA330C9Tweaks|r
 ## Author: Repooc
-## Version: 1.1.0
+## Version: 1.1.1
 ## Notes: Tweak ElvUI Tooltips
 ## RequiredDeps: ElvUI
+## IconTexture: Interface\AddOns\ElvUI\Core\Media\Textures\LogoAddon
 ## X-Curse-Project-ID: 1019254
 ## X-Wago-ID: x61z4pK1
-## IconTexture: Interface\AddOns\ElvUI\Core\Media\Textures\LogoAddon
 
 Profile.lua
 Libs\Load_Libs.xml
