@@ -1,7 +1,7 @@
-## Interface: 110107, 40402, 11507
+## Interface: 110107, 50500, 11507
 ## Title: |cff1784d1ElvUI|r |cff00FF98ToolTip|r |cffA330C9Tweaks|r
 ## Author: Repooc
-## Version: 1.1.1
+## Version: 2.0
 ## Notes: Tweak ElvUI Tooltips
 ## RequiredDeps: ElvUI
 ## IconTexture: Interface\AddOns\ElvUI\Core\Media\Textures\LogoAddon
